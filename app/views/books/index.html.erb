@@ -1,0 +1,16 @@
+<div class="row">
+	<%= render "layouts/errors", obj: @book %>
+	<div class="col-xs-3">
+		<h2>User info</h2>
+		<%= render 'users/profile', user: current_user %>
+
+		<h2>New book</h2>
+		<%= render 'books/form', book: @book %>
+	</div>
+	<div class="col-xs-9">
+		<h2>Books index</h2>
+		<!--books一覧 -->
+		<%= render 'books/index', books: @books %>
+		<!--books一覧 -->
+	</div>
+</div>

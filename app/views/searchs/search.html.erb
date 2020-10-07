@@ -1,0 +1,10 @@
+<h2><%= @model %> search for "<%= @content %>"</h2>
+<% if @datas.present? %>
+    <% if @model == "User" %>
+        <%= render 'users/index', users: @datas %>
+	<% else %>
+	    <%= render 'books/index', books: @datas %>
+    <% end %>
+<% else %>
+    <p>検索結果はありません。</p>
+<% end %>

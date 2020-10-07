@@ -1,0 +1,8 @@
+<!--id="book-<%= @book.id %>-comment-count"の部分（コメント数）の部分的更新を行う。-->
+$("#book_<%= @book.id %> .comments-count").html("コメント数：<%= @book.book_comments.count %>");
+<!--id="#book-comment-<%= @book.id %>"の部分をrenderで部分的更新を行う。-->
+$("#book-comment-<%= @book.id %>").html("<%= j(render partial: 'comment', locals: {book: @book} )%>");
+<!--エラーメッセージがある場合は、エラーメッセージを部分的更新を行う。-->
+$("#error_explanation").html("<%= j(render 'layouts/errors', { obj: @book_comment }) %>");
+<!--コメント入力フォームの中身を空にする。-->
+$('#book_comment_comment').val("");
