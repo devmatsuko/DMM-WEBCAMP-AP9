@@ -21,6 +21,10 @@ class User < ApplicationRecord
   # N：Nのリレーションシップにはthroughを使う。user.followers = user.follower.idとなるようにsourceを設定
   has_many :followers, through: :passive_relationships, source: :follower
   
+  # チャットルームのアソシエーション
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
+  
   # 他パラメータ
   # 画像を設定できるようにする
   attachment :profile_image, destroy: false
