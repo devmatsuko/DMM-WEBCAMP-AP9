@@ -1,11 +1,13 @@
 <% if messages.present? %>
   <% messages.each do |m| %>
     <% if m.user.id == current_user.id %>
+      <%= attachment_image_tag(m.user, :profile_image, :fill, 20, 20, fallback: "no-image-mini.jpg") %>
       <strong><%= m.content %></strong>
       by <%= m.user.name %>さん
       <hr>
     <% else %> 
       <div class="text-right">
+        <%= attachment_image_tag(m.user, :profile_image, :fill, 20, 20, fallback: "no-image-mini.jpg") %>
         <strong><%= m.content %></strong>
         by <%= m.user.name %>さん
       </div>
