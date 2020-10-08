@@ -1,10 +1,27 @@
 <div class="row">
 	<div class="col-xs-3">
+		
 		<h2>User info</h2>
 		<%= render 'users/profile', user: @user %>
-
+		
+		<div class="chat-btn">
+			<% if @user.id != current_user.id %>
+				<% if @isRoom %>
+					<%= link_to "チャットを始める", room_path(@roomId), user_id: @user.id, class: "btn btn-primary" %>
+				<% else %>
+					<%= form_with model: @room, local: true do |f| %>
+			    		<%= fields_for @entry do |e| %>
+					        <%= e.hidden_field :user_id, :value=> @user.id %>
+				      	<% end %>
+				      	<%= f.submit "チャットを始める",class: "btn btn-primary" %>
+			    	<% end %>
+	    		<% end %>
+			<% end %>
+		</div>
+		
 		<h2>New book</h2>
 		<%= render 'books/form', book: @book %>
+		
 	</div>
 
 	<div class="col-xs-9">

@@ -8,9 +8,10 @@ class UsersController < ApplicationController
     @book = Book.new
     # チャットルームのエントリー用のパラメータ
     # 自分のuser_idを含んでいるエントリーを取得
-    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @currentUserEntry = Entry.where(user_id: current_user.id)
     # 現在参照しているユーザのuser_idを含んでいるエントリーを取得
-    @userEntry=Entry.where(user_id: @user.id)
+    @userEntry = Entry.where(user_id: @user.id)
+    
     
     if @user.id != current_user.id
       # 自分と相手のエントリーを比較し、同じルームIDのルームを取得

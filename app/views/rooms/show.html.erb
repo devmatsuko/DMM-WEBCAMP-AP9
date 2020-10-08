@@ -1,0 +1,22 @@
+<% @entries.each do |e| %>
+  <% if e.user.id != current_user.id %>
+    <h3><%= e.user.name %>さんとのチャット</h3>
+  <% end %>
+<% end %>
+<hr>
+<div id="chat-area">
+  <%= render 'messages/message', messages: @messages %>
+</div>
+<%= form_with model: @message, remote: true do |f| %>
+  <div class="field row">
+    <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 , class: "" %>
+    <%= f.hidden_field :room_id, :value => @room.id %>
+  </div>
+  <div class="field row">
+    <%= f.submit "投稿する" %>
+  </div>
+<% end %>
+
+<div class="field row">
+  <%= link_to "ユーザー一覧に戻る", users_path %>
+</div>
